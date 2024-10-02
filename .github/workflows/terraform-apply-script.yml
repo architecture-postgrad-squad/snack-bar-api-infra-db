@@ -35,13 +35,13 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
         env:
           TF_VAR_db_username: ${{ secrets.DB_USERNAME }}
           TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
           TF_VAR_db_name: ${{ secrets.DB_NAME }}
+        run: terraform plan
+
+      - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
 
